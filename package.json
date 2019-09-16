@@ -1,0 +1,10 @@
+{
+  "babel": {
+    "presets": "@babel/env",
+    "@babel/react";
+  }
+  "scripts": {
+    "dev": "webpack-dev-server",
+    "start": "webpack"
+  }
+}
