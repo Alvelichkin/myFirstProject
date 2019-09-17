@@ -1,22 +1,44 @@
-import react {component} from "react";
+import React, { Component } from "react";
 import s from "./app.component.css";
+import List from "Components/List";
+import Count from "Components/Count";
 
 class App extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            TodoList: [{value: "сделать домашку по js"}, {value: "Разобраться с реактом"}, {value: "не сойти с ума от всего этого"}],
-        }
-    }
+    this.state = {
+      todoList: [
+        { value: "сделать домашку по js" },
+        { value: "Разобраться с реактом" },
+        { value: "не сойти с ума от всего этого" }
+      ]
+    };
+  }
 
-    render() {
-        const {TodoList} = this.state;
+  addTodo = () => {
+    const newItem = { value: "Новое дело" };
 
-        return (
-            <div>
-                <List data = {TodoList}, title = "Сделать за сегодняшний вечер" />;
-    </div>
-    )
-    }
+    const { todoList } = this.state;
+    this.setState({
+      todoList: todoList.concat(newItem)
+    });
+  };
+
+
+
+  render() {
+    // const todoList = this.state.todoList;
+    const { todoList } = this.state;
+
+    return (
+      <div>
+        <button onClick={this.addTodo}>Добавить</button>
+        <List data={todoList} title="Сделать за сегодняшний вечер" />
+        <Count />
+      </div>
+    );
+  }
 }
+
+export default App;
